@@ -20,10 +20,7 @@ FROM adoptopenjdk/openjdk11:jdk-11.0.6_10-alpine-slim
 # Copy the jar from the builder container into the run container
 COPY --from=builder /app/build/libs/atm-challenge-*-all.jar app.jar
 
-# Copy templates, libs and plugins folder
-#COPY ./template/* /template/
 COPY ./plugins* /plugins/
-#COPY ./libs/* /libs/
 
 # Application version environmental variable
 ARG APP_VERSION
