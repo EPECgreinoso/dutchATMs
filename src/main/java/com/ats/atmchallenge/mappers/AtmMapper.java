@@ -23,7 +23,6 @@ public interface AtmMapper {
     AtmDto atmToDto(Atm atm);
     @Mapping(target = "houseNumber", source = "housenumber")
     @Mapping(target = "postalCode", source = "postalcode")
-
     AddressDto addressToDto(Address address);
 
     GeoLocationDto geoLocationToDto(GeoLocation geoLocation);

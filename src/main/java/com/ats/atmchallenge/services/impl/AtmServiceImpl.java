@@ -3,7 +3,6 @@ package com.ats.atmchallenge.services.impl;
 import com.ats.atmchallenge.clients.AtmFeignClient;
 import com.ats.atmchallenge.dtos.AtmDto;
 import com.ats.atmchallenge.mappers.AtmMapper;
-import com.ats.atmchallenge.models.Atm;
 import com.ats.atmchallenge.services.IAtmService;
 import com.ats.atmchallenge.utils.FinderHelper;
 import java.util.List;
@@ -20,10 +19,9 @@ public class AtmServiceImpl implements IAtmService {
     private AtmFeignClient client;
 
     public List<AtmDto> getAtmByTerm(String term) {
-        List<Atm> listOfAtm = client.getAll();
-
+        log.info("AtmServiceImpl - getAtmByTerm called for term: %s ", term);
         return AtmMapper.INSTANCE.convertAtmListToAtmDtoList(
-            listOfAtm.stream().filter(atm -> FinderHelper.fullSearch(atm, term))
+            client.getAll().stream().filter(atm -> FinderHelper.fullSearch(atm, term))
                 .collect(Collectors.toList()));
     }
 

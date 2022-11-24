@@ -11,14 +11,14 @@ public class FinderHelper {
 
     public static boolean fullSearch(Atm atm, String term) {
         return Boolean.TRUE.equals(searchOnAddress(atm.getAddress(), term)) ||
-            (atm.getDistance().toString().contains(term) || atm.getType().contains(term));
+            (atm.getDistance().toString().contains(term) || atm.getType().toLowerCase().contains(term.toLowerCase()));
     }
 
     private static Boolean searchOnAddress(Address address, String term) {
-        return address.getStreet().contains(term) ||
-            (address.getHousenumber().contains(term) ||
-                (address.getPostalcode().contains(term) ||
-                    (address.getCity().contains(term) ||
+        return address.getStreet().toLowerCase().contains(term.toLowerCase()) ||
+            (address.getHousenumber().toLowerCase().contains(term.toLowerCase()) ||
+                (address.getPostalcode().toLowerCase().contains(term.toLowerCase()) ||
+                    (address.getCity().toLowerCase().contains(term.toLowerCase()) ||
                         searchOnGeoLocation(address.getGeoLocation(), term))));
     }
 

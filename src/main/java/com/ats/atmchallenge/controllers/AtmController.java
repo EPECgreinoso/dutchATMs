@@ -5,6 +5,7 @@ import com.ats.atmchallenge.services.IAtmService;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,16 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Slf4j
-@RequestMapping("/api/atm")
+@RequestMapping("/atm")
+@CrossOrigin(origins = "*")
+
 public class AtmController {
     @Autowired
-    private IAtmService service;
+    private IAtmService atmService;
 
     @GetMapping("/")
     public List<AtmDto> getFiltered(@RequestParam String term) {
-        List<AtmDto> test = service.getAtmByTerm(term);
-        log.info(test.toString());
-        return test;
+        return atmService.getAtmByTerm(term);
     }
 
 
