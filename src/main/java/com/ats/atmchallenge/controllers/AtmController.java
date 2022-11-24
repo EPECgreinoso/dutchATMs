@@ -20,8 +20,8 @@ public class AtmController {
     @Autowired
     private IAtmService atmService;
 
-    @GetMapping("/")
-    public List<AtmDto> getFiltered(@RequestParam String term) {
+    @GetMapping("/search")
+    public List<AtmDto> getFiltered(@RequestParam(required = true, defaultValue = "") String term) {
         return atmService.getAtmByTerm(term);
     }
 
