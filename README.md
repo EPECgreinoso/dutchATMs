@@ -36,12 +36,12 @@ Once the repositories are cloned you should execute on the source path the follo
 For backend
 ```sh
 docker build -t backend .
-docker run -d -p 8080:8080 -name be backend
+docker run -d -p 8080:8080 --name be backend
 ```
 For Frontend
 ```sh
 docker build -t frontend .
-docker run -d -p 80:80 -name fe frontend
+docker run -d -p 80:80 --name fe frontend
 ```
 To check that everything is running OK
 you should access
