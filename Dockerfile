@@ -15,10 +15,10 @@ RUN gradle clean
 RUN gradle assemble
 
 # Container in which to run the application
-FROM adoptopenjdk/openjdk11:jdk-11.0.6_10-alpine-slim
+FROM adoptopenjdk/openjdk11
 
 # Copy the jar from the builder container into the run container
-COPY --from=builder /app/build/libs/atm-challenge-*-all.jar app.jar
+COPY --from=builder /app/build/libs/atm-challenge-*.jar app.jar
 
 COPY ./plugins* /plugins/
 
