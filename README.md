@@ -35,11 +35,15 @@ You should clone the frontend and backend repository
 Once the repositories are cloned you should execute on the source path the following commands for each project
 For backend
 ```sh
+git clone https://github.com/EPECgreinoso/dutchATMs.git
+cd dutchATMs
 docker build -t backend .
 docker run -d -p 8080:8080 --name be backend
 ```
 For Frontend
 ```sh
+git clone https://github.com/EPECgreinoso/fe-dutchATMs.git
+cd fe-dutchATMs
 docker build -t frontend .
 docker run -d -p 80:80 --name fe frontend
 ```
